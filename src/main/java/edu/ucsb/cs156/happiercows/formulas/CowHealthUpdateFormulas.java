@@ -38,8 +38,4 @@ public class CowHealthUpdateFormulas {
         }
         return Optional.empty();
     }
-
-    public CowHealthUpdateFormula getDefault() {
-        return formulas[0];
-    }
 }
