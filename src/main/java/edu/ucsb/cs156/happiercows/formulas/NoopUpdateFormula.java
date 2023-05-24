@@ -24,7 +24,7 @@ public class NoopUpdateFormula implements CowHealthUpdateFormula {
 
     @Override
     public int getOrder() {
-        return 1000;
+        return LOWEST_PRECEDENCE;
     }
 
     @Override

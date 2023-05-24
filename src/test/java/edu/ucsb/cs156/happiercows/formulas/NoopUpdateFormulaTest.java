@@ -2,6 +2,7 @@ package edu.ucsb.cs156.happiercows.formulas;
 
 import edu.ucsb.cs156.happiercows.entities.UserCommons;
 import org.junit.jupiter.api.Test;
+import org.springframework.core.Ordered;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -13,6 +14,7 @@ class NoopUpdateFormulaTest {
         assertEquals("noop", formula.getId());
         assertEquals("Do nothing", formula.getName());
         assertEquals("Cow health does not change.", formula.getDescription());
+        assertEquals(Ordered.LOWEST_PRECEDENCE, formula.getOrder());
     }
 
     @Test

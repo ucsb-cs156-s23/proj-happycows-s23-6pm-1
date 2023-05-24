@@ -14,6 +14,7 @@ class ConstantUpdateFormulaTest {
         assertEquals("constant", formula.getId());
         assertEquals("Constant", formula.getName());
         assertEquals("Cow health increases/decreases at a constant rate, controlled by the degradation rate.", formula.getDescription());
+        assertEquals(2, formula.getOrder());
     }
 
     @Test
