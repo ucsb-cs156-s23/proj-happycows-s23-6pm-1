@@ -19,7 +19,7 @@ public class LinearUpdateFormula implements CowHealthUpdateFormula {
 
     @Override
     public String getDescription() {
-        return "Cow health changes proportionally to the number of cows over/under the carrying capacity, controlled by the degradation rate.";
+        return "Cow health increases/decreases at a rate proportional to the number of cows over/under the carrying capacity, controlled by the degradation rate.";
     }
 
     @Override

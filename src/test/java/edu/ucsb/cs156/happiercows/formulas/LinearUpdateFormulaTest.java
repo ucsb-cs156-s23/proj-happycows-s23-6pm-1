@@ -8,6 +8,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class LinearUpdateFormulaTest {
 
+
+    @Test
+    void check_properties() {
+        var formula = new LinearUpdateFormula();
+        assertEquals("linear", formula.getId());
+        assertEquals("Linear", formula.getName());
+        assertEquals("Cow health increases/decreases at a rate proportional to the number of cows over/under the carrying capacity, controlled by the degradation rate.", formula.getDescription());
+    }
+
     @Test
     void calculateNewCowHealth_decreases_proportional_to_cows_over_carrying_rate() {
         var formula = new LinearUpdateFormula();

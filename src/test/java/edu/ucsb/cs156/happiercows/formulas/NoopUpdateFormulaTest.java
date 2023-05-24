@@ -8,6 +8,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class NoopUpdateFormulaTest {
 
     @Test
+    void check_properties() {
+        var formula = new NoopUpdateFormula();
+        assertEquals("noop", formula.getId());
+        assertEquals("Do nothing", formula.getName());
+        assertEquals("Cow health does not change.", formula.getDescription());
+    }
+
+    @Test
     void calculateNewCowHealth_does_not_update_health() {
         var formula = new NoopUpdateFormula();
         var user = UserCommons.builder()

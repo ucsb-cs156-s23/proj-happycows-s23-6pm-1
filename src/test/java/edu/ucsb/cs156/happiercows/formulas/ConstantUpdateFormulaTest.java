@@ -9,6 +9,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class ConstantUpdateFormulaTest {
 
     @Test
+    void check_properties() {
+        var formula = new ConstantUpdateFormula();
+        assertEquals("constant", formula.getId());
+        assertEquals("Constant", formula.getName());
+        assertEquals("Cow health increases/decreases at a constant rate, controlled by the degradation rate.", formula.getDescription());
+    }
+
+    @Test
     void calculateNewCowHealth_decreases_cow_health_by_constant_rate() {
         var formula = new ConstantUpdateFormula();
         var commons = Commons.builder()
