@@ -11,11 +11,11 @@ import org.springframework.stereotype.Component;
  * Implementations should be annotated with {@link Component} so they can be automatically
  * discovered by {@link CowHealthUpdateFormulas}.
  * <p>
- * {@link #getOrder()} determines the order in which formulas are shown to the user.
+ * {@link #getOrder()} determines the order in which formulas will be shown to the user.
  */
 public interface CowHealthUpdateFormula extends Ordered {
     /**
-     * A unique identifier for this strategy. This should not be changed, as this is what is stored in the database.
+     * A unique identifier for this strategy.
      */
     String getId();
 

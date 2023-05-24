@@ -5,17 +5,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import static org.junit.jupiter.api.Assertions.assertInstanceOf;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = CowHealthUpdateFormulasTest.Config.class)
 class CowHealthUpdateFormulasTest {
 
-    // config so spring test can find beans in this package
     @TestConfiguration
     @ComponentScan(basePackageClasses = CowHealthUpdateFormulas.class)
     static class Config {
@@ -53,10 +49,18 @@ class CowHealthUpdateFormulasTest {
     }
 
     @Test
-    void noop_config_is_last() {
+    void noop_formula_is_last() {
         var formulas = cowHealthUpdateFormulas.getAll();
         var lastFormula = formulas.get(formulas.size() - 1);
         assertInstanceOf(NoopUpdateFormula.class, lastFormula);
     }
 
+    @Test
+    void errors_if_duplicate_id_found() {
+        var formulasService = new CowHealthUpdateFormulas();
+        assertThrows(RuntimeException.class, () -> formulasService.setFormulas(new CowHealthUpdateFormula[]{
+                new ConstantUpdateFormula(),
+                new ConstantUpdateFormula(),
+        }));
+    }
 }
