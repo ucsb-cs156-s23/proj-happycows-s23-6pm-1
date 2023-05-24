@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-s23/proj-happycows-s23-6pm-1
 owner: ucsb-cs156-s23
 repo_name: proj-happycows-s23-6pm-1
-pull_requests: [{"author":{"id":"MDQ6VXNlcjI0MjM3MDY1","is_bot":false,"login":"GlassBricks","name":"Benjamin Ye"},"headRefName":"by-add-cow-health-update-enum","number":21,"title":"Add different cow health update formulas, as a java enum","url":"https://github.com/ucsb-cs156-s23/proj-happycows-s23-6pm-1/pull/21"},{"author":{"id":"MDQ6VXNlcjI0MjM3MDY1","is_bot":false,"login":"GlassBricks","name":"Benjamin Ye"},"headRefName":"by-add-cow-health-update-strategies","number":20,"title":"Add strategy pattern for different cow health update formulas","url":"https://github.com/ucsb-cs156-s23/proj-happycows-s23-6pm-1/pull/20"}]
+pull_requests: [{"author":{"id":"MDQ6VXNlcjI0MjM3MDY1","is_bot":false,"login":"GlassBricks","name":"Benjamin Ye"},"headRefName":"by-add-cow-health-update-enum","number":21,"title":"Add different cow health update formulas, as a java enum","url":"https://github.com/ucsb-cs156-s23/proj-happycows-s23-6pm-1/pull/21"}]
