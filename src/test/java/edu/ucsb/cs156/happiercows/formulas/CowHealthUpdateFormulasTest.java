@@ -5,11 +5,13 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @ExtendWith(SpringExtension.class)
+@ContextConfiguration(classes = CowHealthUpdateFormulasTest.Config.class)
 class CowHealthUpdateFormulasTest {
 
     @TestConfiguration
@@ -48,11 +50,14 @@ class CowHealthUpdateFormulasTest {
         assertTrue(formula.isEmpty());
     }
 
+
     @Test
-    void noop_formula_is_last() {
-        var formulas = cowHealthUpdateFormulas.getAll();
-        var lastFormula = formulas.get(formulas.size() - 1);
-        assertInstanceOf(NoopUpdateFormula.class, lastFormula);
+    void no_errors_if_no_duplicate() {
+        var formulasService = new CowHealthUpdateFormulas();
+        assertDoesNotThrow(() -> formulasService.setFormulas(new CowHealthUpdateFormula[]{
+                new ConstantUpdateFormula(),
+                new LinearUpdateFormula(),
+        }));
     }
 
     @Test
