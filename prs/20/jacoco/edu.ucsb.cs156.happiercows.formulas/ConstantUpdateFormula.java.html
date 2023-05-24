@@ -29,7 +29,7 @@ import org.springframework.stereotype.Component;
 
     @Override
     public double calculateNewCowHealth(Commons commons, UserCommons user, int totalCows) {
-<span class="fc bfc" id="L32" title="All 2 branches covered.">        if (totalCows &lt; commons.getCarryingCapacity()) {</span>
+<span class="fc bfc" id="L32" title="All 2 branches covered.">        if (totalCows &lt;= commons.getCarryingCapacity()) {</span>
 <span class="fc" id="L33">            return user.getCowHealth() + commons.getDegradationRate();</span>
         } else {
 <span class="fc" id="L35">            return user.getCowHealth() - commons.getDegradationRate();</span>
