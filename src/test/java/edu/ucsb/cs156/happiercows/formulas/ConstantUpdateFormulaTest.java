@@ -43,6 +43,7 @@ class ConstantUpdateFormulaTest {
                 .cowHealth(50)
                 .build();
 
+        assertEquals(50.1, formula.calculateNewCowHealth(commons, user, 100));
         assertEquals(50.1, formula.calculateNewCowHealth(commons, user, 90));
         assertEquals(50.1, formula.calculateNewCowHealth(commons, user, 80));
     }

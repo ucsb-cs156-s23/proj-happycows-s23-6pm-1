@@ -29,7 +29,7 @@ public class ConstantUpdateFormula implements CowHealthUpdateFormula {
 
     @Override
     public double calculateNewCowHealth(Commons commons, UserCommons user, int totalCows) {
-        if (totalCows < commons.getCarryingCapacity()) {
+        if (totalCows <= commons.getCarryingCapacity()) {
             return user.getCowHealth() + commons.getDegradationRate();
         } else {
             return user.getCowHealth() - commons.getDegradationRate();
