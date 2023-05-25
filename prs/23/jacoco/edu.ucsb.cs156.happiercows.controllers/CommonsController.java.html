@@ -10,7 +10,7 @@ import edu.ucsb.cs156.happiercows.errors.EntityNotFoundException;
 import edu.ucsb.cs156.happiercows.models.CreateCommonsParams;
 import edu.ucsb.cs156.happiercows.repositories.CommonsRepository;
 import edu.ucsb.cs156.happiercows.repositories.UserCommonsRepository;
-import edu.ucsb.cs156.happiercows.services.CowHealthUpdateStrategy;
+import edu.ucsb.cs156.happiercows.strategies.CowHealthUpdateStrategies;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -98,11 +98,11 @@ import java.util.stream.Collectors;
 <span class="fc" id="L98">        updated.setShowLeaderboard(params.getShowLeaderboard());</span>
 <span class="fc" id="L99">        updated.setDegradationRate(params.getDegradationRate());</span>
 <span class="fc" id="L100">        updated.setCarryingCapacity(params.getCarryingCapacity());</span>
-<span class="fc bfc" id="L101" title="All 2 branches covered.">        if (params.getAboveCapacityUpdateStrategy() != null) {</span>
-<span class="fc" id="L102">            updated.setAboveCapacityUpdateStrategy(CowHealthUpdateStrategy.valueOf(params.getAboveCapacityUpdateStrategy()));</span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">        if (params.getAboveCapacityHealthUpdateStrategy() != null) {</span>
+<span class="fc" id="L102">            updated.setAboveCapacityHealthUpdateStrategy(CowHealthUpdateStrategies.valueOf(params.getAboveCapacityHealthUpdateStrategy()));</span>
         }
-<span class="fc bfc" id="L104" title="All 2 branches covered.">        if (params.getBelowCapacityUpdateStrategy() != null) {</span>
-<span class="fc" id="L105">            updated.setBelowCapacityUpdateStrategy(CowHealthUpdateStrategy.valueOf(params.getBelowCapacityUpdateStrategy()));</span>
+<span class="fc bfc" id="L104" title="All 2 branches covered.">        if (params.getBelowCapacityHealthUpdateStrategy() != null) {</span>
+<span class="fc" id="L105">            updated.setBelowCapacityHealthUpdateStrategy(CowHealthUpdateStrategies.valueOf(params.getBelowCapacityHealthUpdateStrategy()));</span>
         }
 
 <span class="fc bfc" id="L108" title="All 2 branches covered.">        if (params.getDegradationRate() &lt; 0) {</span>
@@ -133,7 +133,7 @@ import java.util.stream.Collectors;
             @ApiParam(&quot;request body&quot;) @RequestBody CreateCommonsParams params
     ) throws JsonProcessingException {
 
-<span class="fc" id="L136">        Commons.CommonsBuilder builder = Commons.builder()</span>
+<span class="fc" id="L136">        var builder = Commons.builder()</span>
 <span class="fc" id="L137">                .name(params.getName())</span>
 <span class="fc" id="L138">                .cowPrice(params.getCowPrice())</span>
 <span class="fc" id="L139">                .milkPrice(params.getMilkPrice())</span>
@@ -144,11 +144,11 @@ import java.util.stream.Collectors;
 <span class="fc" id="L144">                .carryingCapacity(params.getCarryingCapacity());</span>
 
         // ok to set null values for these, so old backend still works
-<span class="fc bfc" id="L147" title="All 2 branches covered.">        if (params.getAboveCapacityUpdateStrategy() != null) {</span>
-<span class="fc" id="L148">            builder.aboveCapacityUpdateStrategy(CowHealthUpdateStrategy.valueOf(params.getAboveCapacityUpdateStrategy()));</span>
+<span class="fc bfc" id="L147" title="All 2 branches covered.">        if (params.getAboveCapacityHealthUpdateStrategy() != null) {</span>
+<span class="fc" id="L148">            builder.aboveCapacityHealthUpdateStrategy(CowHealthUpdateStrategies.valueOf(params.getAboveCapacityHealthUpdateStrategy()));</span>
         }
-<span class="fc bfc" id="L150" title="All 2 branches covered.">        if (params.getBelowCapacityUpdateStrategy() != null) {</span>
-<span class="fc" id="L151">            builder.belowCapacityUpdateStrategy(CowHealthUpdateStrategy.valueOf(params.getBelowCapacityUpdateStrategy()));</span>
+<span class="fc bfc" id="L150" title="All 2 branches covered.">        if (params.getBelowCapacityHealthUpdateStrategy() != null) {</span>
+<span class="fc" id="L151">            builder.belowCapacityHealthUpdateStrategy(CowHealthUpdateStrategies.valueOf(params.getBelowCapacityHealthUpdateStrategy()));</span>
         }
 
 <span class="fc" id="L154">        Commons commons = builder.build();</span>
