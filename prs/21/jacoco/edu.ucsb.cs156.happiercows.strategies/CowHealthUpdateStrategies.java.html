@@ -5,30 +5,37 @@ import edu.ucsb.cs156.happiercows.entities.UserCommons;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
-<span class="fc" id="L8">@Getter</span>
+/**
+ * The CowHealthUpdateStrategies enum provides a variety of strategies for updating cow health.
+ * 
+ * For information on Java enum's, see the Oracle Java Tutorial on &lt;a href=&quot;https://docs.oracle.com/javase/tutorial/java/javaOO/enum.html&quot;&gt;Enum Types&lt;/a&gt;,
+ * which are far more powerful in Java than enums in most other languages.
+ */
+
+<span class="fc" id="L15">@Getter</span>
 @AllArgsConstructor
 public enum CowHealthUpdateStrategies implements CowHealthUpdateStrategy {
 
-<span class="fc" id="L12">    Linear(&quot;Linear&quot;, &quot;Cow health increases/decreases proportionally to the number of cows over/under the carrying capacity.&quot;) {</span>
+<span class="fc" id="L19">    Linear(&quot;Linear&quot;, &quot;Cow health increases/decreases proportionally to the number of cows over/under the carrying capacity.&quot;) {</span>
         @Override
         public double calculateNewCowHealth(Commons commons, UserCommons user, int totalCows) {
-<span class="fc" id="L15">            return user.getCowHealth() - (totalCows - commons.getCarryingCapacity()) * commons.getDegradationRate();</span>
+<span class="fc" id="L22">            return user.getCowHealth() - (totalCows - commons.getCarryingCapacity()) * commons.getDegradationRate();</span>
         }
     },
-<span class="fc" id="L18">    Constant(&quot;Constant&quot;, &quot;Cow health changes increases/decreases by the degradation rate, depending on if the number of cows exceeds the carrying capacity.&quot;) {</span>
+<span class="fc" id="L25">    Constant(&quot;Constant&quot;, &quot;Cow health changes increases/decreases by the degradation rate, depending on if the number of cows exceeds the carrying capacity.&quot;) {</span>
         @Override
         public double calculateNewCowHealth(Commons commons, UserCommons user, int totalCows) {
-<span class="fc bfc" id="L21" title="All 2 branches covered.">            if (totalCows &lt;= commons.getCarryingCapacity()) {</span>
-<span class="fc" id="L22">                return user.getCowHealth() + commons.getDegradationRate();</span>
+<span class="fc bfc" id="L28" title="All 2 branches covered.">            if (totalCows &lt;= commons.getCarryingCapacity()) {</span>
+<span class="fc" id="L29">                return user.getCowHealth() + commons.getDegradationRate();</span>
             } else {
-<span class="fc" id="L24">                return user.getCowHealth() - commons.getDegradationRate();</span>
+<span class="fc" id="L31">                return user.getCowHealth() - commons.getDegradationRate();</span>
             }
         }
     },
-<span class="fc" id="L28">    Noop(&quot;Do nothing&quot;, &quot;Cow health does not change.&quot;) {</span>
+<span class="fc" id="L35">    Noop(&quot;Do nothing&quot;, &quot;Cow health does not change.&quot;) {</span>
         @Override
         public double calculateNewCowHealth(Commons commons, UserCommons user, int totalCows) {
-<span class="fc" id="L31">            return user.getCowHealth();</span>
+<span class="fc" id="L38">            return user.getCowHealth();</span>
         }
     };
 
