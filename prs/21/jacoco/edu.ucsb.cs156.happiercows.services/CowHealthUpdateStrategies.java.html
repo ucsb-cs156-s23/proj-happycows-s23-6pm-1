@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CowHealthUpdateStrategies.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">example</a> &gt; <a href="index.source.html" class="el_package">edu.ucsb.cs156.happiercows.services</a> &gt; <span class="el_source">CowHealthUpdateStrategies.java</span></div><h1>CowHealthUpdateStrategies.java</h1><pre class="source lang-java linenums">package edu.ucsb.cs156.happiercows.services;
+
+import edu.ucsb.cs156.happiercows.entities.Commons;
+import edu.ucsb.cs156.happiercows.entities.UserCommons;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+/**
+ * Available options for {@link CowHealthUpdateStrategy}
+ */
+<span class="fc" id="L11">@Getter</span>
+@AllArgsConstructor
+public enum CowHealthUpdateStrategies implements CowHealthUpdateStrategy {
+
+<span class="fc" id="L15">    Linear(&quot;Linear&quot;, &quot;Cow health increases/decreases proportionally to the number of cows over/under the carrying capacity.&quot;) {</span>
+        @Override
+        public double calculateNewCowHealth(Commons commons, UserCommons user, int totalCows) {
+<span class="fc" id="L18">            return user.getCowHealth() - (totalCows - commons.getCarryingCapacity()) * commons.getDegradationRate();</span>
+        }
+    },
+<span class="fc" id="L21">    Constant(&quot;Constant&quot;, &quot;Cow health changes increases/decreases by the degradation rate, depending on if the number of cows exceeds the carrying capacity.&quot;) {</span>
+        @Override
+        public double calculateNewCowHealth(Commons commons, UserCommons user, int totalCows) {
+<span class="fc bfc" id="L24" title="All 2 branches covered.">            if (totalCows &lt;= commons.getCarryingCapacity()) {</span>
+<span class="fc" id="L25">                return user.getCowHealth() + commons.getDegradationRate();</span>
+            } else {
+<span class="fc" id="L27">                return user.getCowHealth() - commons.getDegradationRate();</span>
+            }
+        }
+    },
+<span class="fc" id="L31">    Noop(&quot;Do nothing&quot;, &quot;Cow health does not change.&quot;) {</span>
+        @Override
+        public double calculateNewCowHealth(Commons commons, UserCommons user, int totalCows) {
+<span class="fc" id="L34">            return user.getCowHealth();</span>
+        }
+    };
+
+
+    private final String displayName;
+    private final String description;
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
