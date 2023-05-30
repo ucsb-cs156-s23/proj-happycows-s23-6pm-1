@@ -108,39 +108,43 @@ const AdminJobsPage = () => {
         },
     ]
 
-    /*
-    return (
+    try {
+        return (
+            
+            <BasicLayout>
+
+                <h2 className="p-3">Launch Jobs</h2>
+                <Accordion>
+                    {
+                        jobLaunchers.map((jobLauncher, index) => (
+                            <Accordion.Item eventKey={index}>
+                                <Accordion.Header>{jobLauncher.name}</Accordion.Header>
+                                <Accordion.Body>
+                                    {jobLauncher.form}
+                                </Accordion.Body>
+                            </Accordion.Item>
+                        ))
+                    }
+                </Accordion>
+
+                <h2 className="p-3">Job Status</h2>
+                <JobsTable jobs={jobs} />
+
+            </BasicLayout>
+            
         
-        <BasicLayout>
-
-            <h2 className="p-3">Launch Jobs</h2>
-            <Accordion>
-                {
-                    jobLaunchers.map((jobLauncher, index) => (
-                        <Accordion.Item eventKey={index}>
-                            <Accordion.Header>{jobLauncher.name}</Accordion.Header>
-                            <Accordion.Body>
-                                {jobLauncher.form}
-                            </Accordion.Body>
-                        </Accordion.Item>
-                    ))
-                }
-            </Accordion>
-
-            <h2 className="p-3">Job Status</h2>
-            <JobsTable jobs={jobs} />
-
-        </BasicLayout>
+        );
+    } finally {
+        return (
+            <BasicLayout>
+              <div className="pt-2">
+                <h1>List Commons</h1>
+              </div>
+            </BasicLayout>
+          );
+    }
         
-       
-    );*/
-    return (
-        <BasicLayout>
-          <div className="pt-2">
-            <h1>List Commons</h1>
-          </div>
-        </BasicLayout>
-      );
+    
 };
 
 export default AdminJobsPage;
