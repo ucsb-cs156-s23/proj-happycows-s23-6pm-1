@@ -1,4 +1,5 @@
 /*eslint no-unused-vars: ["error", { "varsIgnorePattern": "[jJ]ob" }]*/
+/* eslint-disable @typescript-eslint/no-unused-vars */
 
 import React from "react";
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
@@ -115,12 +116,7 @@ const AdminJobsPage = () => {
             
             <BasicLayout>
 
-                <h2 className="p-3">Launch Jobs</h2>
-                <Accordion>
-                    {
-
-                    }
-                </Accordion>
+                <h2 className="p-3">Launch Jobs0</h2>
 
             </BasicLayout>
             
