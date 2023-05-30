@@ -108,7 +108,9 @@ const AdminJobsPage = () => {
         },
     ]
 
+    /*
     return (
+        
         <BasicLayout>
 
             <h2 className="p-3">Launch Jobs</h2>
@@ -129,7 +131,16 @@ const AdminJobsPage = () => {
             <JobsTable jobs={jobs} />
 
         </BasicLayout>
-    );
+        
+       
+    );*/
+    return (
+        <BasicLayout>
+          <div className="pt-2">
+            <h1>List Commons</h1>
+          </div>
+        </BasicLayout>
+      );
 };
 
 export default AdminJobsPage;
