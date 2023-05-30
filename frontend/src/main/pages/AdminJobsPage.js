@@ -1,5 +1,5 @@
 /*eslint no-unused-vars: ["error", { "varsIgnorePattern": "[jJ]ob" }]*/
-/* eslint-disable @typescript-eslint/no-unused-vars */
+/*eslint-disable @typescript-eslint/no-unused-vars*/
 
 import React from "react";
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
@@ -113,26 +113,15 @@ const AdminJobsPage = () => {
 
     try {
         return (
-            <BasicLayout>
-              <div className="p-4">
-                <h1>Please Succeed</h1>
-              </div>
-            </BasicLayout>
-          );
-    } catch {
-        return (
             
             <BasicLayout>
 
-                <h2 className="p-3">Launch Jobs</h2>
+                <h2 className="p-10">Test Success</h2>
                 <Accordion>
                     {
                         jobLaunchers.map((jobLauncher, index) => (
                             <Accordion.Item eventKey={index}>
                                 <Accordion.Header>{jobLauncher.name}</Accordion.Header>
-                                <Accordion.Body>
-                                    {jobLauncher.form}
-                                </Accordion.Body>
                             </Accordion.Item>
                         ))
                     }
@@ -143,13 +132,38 @@ const AdminJobsPage = () => {
         
         );
     } finally {
-        return (
-            <BasicLayout>
-              <div className="pt-2">
-                <h1>List Commons</h1>
-              </div>
-            </BasicLayout>
-          );
+        try {
+            return (
+            
+                <BasicLayout>
+    
+                    <h2 className="p-3">Launch Jobs</h2>
+                    <Accordion>
+                        {
+                            jobLaunchers.map((jobLauncher, index) => (
+                                <Accordion.Item eventKey={index}>
+                                    <Accordion.Header>{jobLauncher.name}</Accordion.Header>
+                                    <Accordion.Body>
+                                        {jobLauncher.form}
+                                    </Accordion.Body>
+                                </Accordion.Item>
+                            ))
+                        }
+                    </Accordion>
+    
+                </BasicLayout>
+                
+            
+            );
+        } catch {
+            return (
+                <BasicLayout>
+                <div className="pt-2">
+                    <h1>Test Fail</h1>
+                </div>
+                </BasicLayout>
+            );
+        }
     }
         
     
