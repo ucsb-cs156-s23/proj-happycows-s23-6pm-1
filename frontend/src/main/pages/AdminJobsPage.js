@@ -127,9 +127,6 @@ const AdminJobsPage = () => {
                     }
                 </Accordion>
 
-                <h2 className="p-3">Job Status</h2>
-                <JobsTable jobs={jobs} />
-
             </BasicLayout>
             
         
