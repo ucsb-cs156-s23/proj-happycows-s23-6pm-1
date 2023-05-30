@@ -116,8 +116,9 @@ const AdminJobsPage = () => {
             
             <BasicLayout>
 
-                <h2 className="p-3">Launch Jobs0</h2>
-
+                <div className="pt-2">
+                    <h1>Launch Jobs 0</h1>
+                </div>
             </BasicLayout>
             
         
