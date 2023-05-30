@@ -1,3 +1,5 @@
+/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "[jJ]ob" }]*/
+
 import React from "react";
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
 import JobsTable from "main/components/Jobs/JobsTable";
@@ -109,6 +111,22 @@ const AdminJobsPage = () => {
     ]
 
     try {
+        return (
+            
+            <BasicLayout>
+
+                <h2 className="p-3">Launch Jobs</h2>
+                <Accordion>
+                    {
+
+                    }
+                </Accordion>
+
+            </BasicLayout>
+            
+        
+        );
+    } catch {
         return (
             
             <BasicLayout>
