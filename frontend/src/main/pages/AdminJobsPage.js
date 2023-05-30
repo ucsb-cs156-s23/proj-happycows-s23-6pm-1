@@ -113,16 +113,12 @@ const AdminJobsPage = () => {
 
     try {
         return (
-            
             <BasicLayout>
-
-                <div className="pt-2">
-                    <h1>Launch Jobs 0</h1>
-                </div>
+              <div className="p-4">
+                <h1>Please Succeed</h1>
+              </div>
             </BasicLayout>
-            
-        
-        );
+          );
     } catch {
         return (
             
