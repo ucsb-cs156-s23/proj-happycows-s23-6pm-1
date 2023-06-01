@@ -1,6 +1,6 @@
 import React from "react";
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
-import JobsTable from "main/components/Jobs/JobsTable";
+//import JobsTable from "main/components/Jobs/JobsTable";
 import { useBackend } from "main/utils/useBackend";
 //import Accordion from 'react-bootstrap/Accordion';
 //import TestJobForm from "main/components/Jobs/TestJobForm";
@@ -123,12 +123,14 @@ const AdminJobsPage = () => {
                     ))
                 }
             </Accordion>
+
+            <h2 className="p-3">Job Status</h2>
+            <JobsTable jobs={jobs} />
 */
     return (
         <BasicLayout>
 
-            <h2 className="p-3">Job Status</h2>
-            <JobsTable jobs={jobs} />
+            
 
         </BasicLayout>
     );
