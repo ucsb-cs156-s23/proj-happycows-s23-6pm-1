@@ -1,22 +1,18 @@
-/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "[jJ]ob" }]*/
-/*eslint-disable @typescript-eslint/no-unused-vars*/
-
 import React from "react";
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
-//import JobsTable from "main/components/Jobs/JobsTable";
-//import { useBackend } from "main/utils/useBackend";
+import JobsTable from "main/components/Jobs/JobsTable";
+import { useBackend } from "main/utils/useBackend";
 import Accordion from 'react-bootstrap/Accordion';
 import TestJobForm from "main/components/Jobs/TestJobForm";
 import UpdateCowHealthForm from "main/components/Jobs/UpdateCowHealthForm";
 import MilkCowsJobForm from "main/components/Jobs/MilkCowsJobForm";
 import InstructorReportForm from "main/components/Jobs/InstructorReportForm";
-import { toast } from "react-toastify";
 
 import { useBackendMutation } from "main/utils/useBackend";
 
 const AdminJobsPage = () => {
 
-    //const refreshJobsIntervalMilliseconds = 5000;
+    const refreshJobsIntervalMilliseconds = 300;
 
     const objectToAxiosParamsTestJob = (data) => ({
         url: `/api/jobs/launch/testjob?fail=${data.fail}&sleepMs=${data.sleepMs}`,
@@ -33,10 +29,9 @@ const AdminJobsPage = () => {
 
     const submitTestJob = async (data) => {
         console.log("submitTestJob, data=", data);
-        toast('Submitted job: Test Job');
         testJobMutation.mutate(data);
     }
-    /*
+
     // Stryker disable all
     const { data: jobs, error: _error, status: _status } =
         useBackend(
@@ -49,7 +44,7 @@ const AdminJobsPage = () => {
             { refetchInterval: refreshJobsIntervalMilliseconds }
         );
     // Stryker enable  all
-*/
+
     // UpdateCowHealth job
 
     const objectToAxiosParamsUpdateCowHealthJob = () => ({
@@ -66,8 +61,7 @@ const AdminJobsPage = () => {
     // Stryker enable all
 
     const submitUpdateCowHealthJob = async () => {
-        console.log("submitUpdateCowHealthJob");
-        toast('Submitted Job: Update Cow Health');
+        console.log("submitUpdateCowHealthJob")
         UpdateCowHealthMutation.mutate();
     }
 
@@ -87,8 +81,7 @@ const AdminJobsPage = () => {
     // Stryker enable all
 
     const submitMilkTheCowsJob = async () => {
-        console.log("submitMilkTheCowsJob");
-        toast('Submitted Job: Milk The Cows');
+        console.log("submitMilkTheCowsJob")
         MilkTheCowsMutation.mutate();
     }
 
@@ -112,7 +105,6 @@ const AdminJobsPage = () => {
     ]
 
     return (
-            
         <BasicLayout>
 
             <h2 className="p-3">Launch Jobs</h2>
@@ -129,12 +121,11 @@ const AdminJobsPage = () => {
                 }
             </Accordion>
 
+            <h2 className="p-3">Job Status</h2>
+            <JobsTable jobs={jobs} />
+
         </BasicLayout>
-        
-    
     );
-        
-    
 };
 
 export default AdminJobsPage;
