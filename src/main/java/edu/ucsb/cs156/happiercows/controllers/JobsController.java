@@ -52,7 +52,7 @@ public class JobsController extends ApiController {
     MilkTheCowsJobFactory milkTheCowsJobFactory;
 
     @ApiOperation(value = "List all jobs")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    //@PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/all")
     public Iterable<Job> allJobs() {
         Iterable<Job> jobs = jobsRepository.findAll();
