@@ -14,7 +14,7 @@ import java.time.ZonedDateTime;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 @Builder
 @Entity(name = "jobs")
 @EntityListeners(AuditingEntityListener.class)
