@@ -1,7 +1,7 @@
 import React from "react";
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
 //import JobsTable from "main/components/Jobs/JobsTable";
-import { useBackend } from "main/utils/useBackend";
+//import { useBackend } from "main/utils/useBackend";
 //import Accordion from 'react-bootstrap/Accordion';
 //import TestJobForm from "main/components/Jobs/TestJobForm";
 //import UpdateCowHealthForm from "main/components/Jobs/UpdateCowHealthForm";
@@ -12,7 +12,7 @@ import { useBackend } from "main/utils/useBackend";
 
 const AdminJobsPage = () => {
 
-    const refreshJobsIntervalMilliseconds = 5000;
+    //const refreshJobsIntervalMilliseconds = 5000;
 
     /*
     const objectToAxiosParamsTestJob = (data) => ({
@@ -35,6 +35,7 @@ const AdminJobsPage = () => {
     }*/
 
     // Stryker disable all
+    /*
     const { data: jobs, error: _error, status: _status } =
         useBackend(
             ["/api/jobs/all"],
