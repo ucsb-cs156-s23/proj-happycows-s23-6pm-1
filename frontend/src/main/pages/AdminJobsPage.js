@@ -110,10 +110,7 @@ const AdminJobsPage = () => {
         }*/
     ]
 
-    return (
-        <BasicLayout>
-
-            <h2 className="p-3">Launch Jobs</h2>
+    /*<h2 className="p-3">Launch Jobs</h2>
             <Accordion>
                 {
                     jobLaunchers.map((jobLauncher, index) => (
@@ -126,6 +123,9 @@ const AdminJobsPage = () => {
                     ))
                 }
             </Accordion>
+*/
+    return (
+        <BasicLayout>
 
             <h2 className="p-3">Job Status</h2>
             <JobsTable jobs={jobs} />
