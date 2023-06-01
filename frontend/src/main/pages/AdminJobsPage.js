@@ -6,7 +6,7 @@ import Accordion from 'react-bootstrap/Accordion';
 //import TestJobForm from "main/components/Jobs/TestJobForm";
 //import UpdateCowHealthForm from "main/components/Jobs/UpdateCowHealthForm";
 //import MilkCowsJobForm from "main/components/Jobs/MilkCowsJobForm";
-import InstructorReportForm from "main/components/Jobs/InstructorReportForm";
+//import InstructorReportForm from "main/components/Jobs/InstructorReportForm";
 
 //import { useBackendMutation } from "main/utils/useBackend";
 
@@ -103,11 +103,11 @@ const AdminJobsPage = () => {
             name: "Milk The Cows",
             form: <MilkCowsJobForm submitAction={submitMilkTheCowsJob}/>
         },
-        */
+        
         {
             name: "Instructor Report",
             form: <InstructorReportForm />
-        }
+        }*/
     ]
 
     return (
