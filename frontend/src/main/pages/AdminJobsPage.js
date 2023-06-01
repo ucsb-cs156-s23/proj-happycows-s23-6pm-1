@@ -3,8 +3,8 @@
 
 import React from "react";
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
-import JobsTable from "main/components/Jobs/JobsTable";
-import { useBackend } from "main/utils/useBackend";
+//import JobsTable from "main/components/Jobs/JobsTable";
+//import { useBackend } from "main/utils/useBackend";
 import Accordion from 'react-bootstrap/Accordion';
 import TestJobForm from "main/components/Jobs/TestJobForm";
 import UpdateCowHealthForm from "main/components/Jobs/UpdateCowHealthForm";
@@ -16,7 +16,7 @@ import { useBackendMutation } from "main/utils/useBackend";
 
 const AdminJobsPage = () => {
 
-    const refreshJobsIntervalMilliseconds = 5000;
+    //const refreshJobsIntervalMilliseconds = 5000;
 
     const objectToAxiosParamsTestJob = (data) => ({
         url: `/api/jobs/launch/testjob?fail=${data.fail}&sleepMs=${data.sleepMs}`,
@@ -36,7 +36,7 @@ const AdminJobsPage = () => {
         toast('Submitted job: Test Job');
         testJobMutation.mutate(data);
     }
-
+    /*
     // Stryker disable all
     const { data: jobs, error: _error, status: _status } =
         useBackend(
@@ -49,7 +49,7 @@ const AdminJobsPage = () => {
             { refetchInterval: refreshJobsIntervalMilliseconds }
         );
     // Stryker enable  all
-
+*/
     // UpdateCowHealth job
 
     const objectToAxiosParamsUpdateCowHealthJob = () => ({
@@ -111,60 +111,28 @@ const AdminJobsPage = () => {
         },
     ]
 
-    try {
-        return (
+    return (
             
-            <BasicLayout>
+        <BasicLayout>
 
-                <h2 className="p-10">Test Success</h2>
-                <Accordion>
-                    {
-                        jobLaunchers.map((jobLauncher, index) => (
-                            <Accordion.Item eventKey={index}>
-                                <Accordion.Header>{jobLauncher.name}</Accordion.Header>
-                            </Accordion.Item>
-                        ))
-                    }
-                </Accordion>
+            <h2 className="p-3">Launch Jobs</h2>
+            <Accordion>
+                {
+                    jobLaunchers.map((jobLauncher, index) => (
+                        <Accordion.Item eventKey={index}>
+                            <Accordion.Header>{jobLauncher.name}</Accordion.Header>
+                            <Accordion.Body>
+                                {jobLauncher.form}
+                            </Accordion.Body>
+                        </Accordion.Item>
+                    ))
+                }
+            </Accordion>
 
-            </BasicLayout>
-            
+        </BasicLayout>
         
-        );
-    } finally {
-        try {
-            return (
-            
-                <BasicLayout>
     
-                    <h2 className="p-3">Launch Jobs</h2>
-                    <Accordion>
-                        {
-                            jobLaunchers.map((jobLauncher, index) => (
-                                <Accordion.Item eventKey={index}>
-                                    <Accordion.Header>{jobLauncher.name}</Accordion.Header>
-                                    <Accordion.Body>
-                                        {jobLauncher.form}
-                                    </Accordion.Body>
-                                </Accordion.Item>
-                            ))
-                        }
-                    </Accordion>
-    
-                </BasicLayout>
-                
-            
-            );
-        } catch {
-            return (
-                <BasicLayout>
-                <div className="pt-2">
-                    <h1>Test Fail</h1>
-                </div>
-                </BasicLayout>
-            );
-        }
-    }
+    );
         
     
 };
