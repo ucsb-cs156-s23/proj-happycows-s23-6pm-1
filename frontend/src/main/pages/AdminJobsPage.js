@@ -3,18 +3,18 @@ import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
 //import JobsTable from "main/components/Jobs/JobsTable";
 //import { useBackend } from "main/utils/useBackend";
 import Accordion from 'react-bootstrap/Accordion';
-//import TestJobForm from "main/components/Jobs/TestJobForm";
+import TestJobForm from "main/components/Jobs/TestJobForm";
 //import UpdateCowHealthForm from "main/components/Jobs/UpdateCowHealthForm";
 //import MilkCowsJobForm from "main/components/Jobs/MilkCowsJobForm";
 import InstructorReportForm from "main/components/Jobs/InstructorReportForm";
 
-//import { useBackendMutation } from "main/utils/useBackend";
+import { useBackendMutation } from "main/utils/useBackend";
 
 const AdminJobsPage = () => {
 
     //const refreshJobsIntervalMilliseconds = 5000;
 
-    /*
+    
     const objectToAxiosParamsTestJob = (data) => ({
         url: `/api/jobs/launch/testjob?fail=${data.fail}&sleepMs=${data.sleepMs}`,
         method: "POST"
@@ -32,7 +32,7 @@ const AdminJobsPage = () => {
     const submitTestJob = async (data) => {
         console.log("submitTestJob, data=", data);
         testJobMutation.mutate(data);
-    }*/
+    }
 
     // Stryker disable all
     /*
@@ -91,11 +91,12 @@ const AdminJobsPage = () => {
     }*/
 
     const jobLaunchers = [
-        /*
+        
         {
             name: "Test Job",
             form:  <TestJobForm submitAction={submitTestJob} />
         },
+        /*
         {
             name: "Update Cow Health",
             form: <UpdateCowHealthForm submitAction={submitUpdateCowHealthJob}/>
