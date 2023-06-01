@@ -86,6 +86,7 @@ const AdminJobsPage = () => {
     }
 
     const jobLaunchers = [
+        /*
         {
             name: "Test Job",
             form:  <TestJobForm submitAction={submitTestJob} />
@@ -98,10 +99,11 @@ const AdminJobsPage = () => {
             name: "Milk The Cows",
             form: <MilkCowsJobForm submitAction={submitMilkTheCowsJob}/>
         },
+        */
         {
             name: "Instructor Report",
             form: <InstructorReportForm />
-        },
+        }
     ]
 
     return (
