@@ -2,11 +2,11 @@ import React from "react";
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
 //import JobsTable from "main/components/Jobs/JobsTable";
 //import { useBackend } from "main/utils/useBackend";
-//import Accordion from 'react-bootstrap/Accordion';
+import Accordion from 'react-bootstrap/Accordion';
 //import TestJobForm from "main/components/Jobs/TestJobForm";
 //import UpdateCowHealthForm from "main/components/Jobs/UpdateCowHealthForm";
 //import MilkCowsJobForm from "main/components/Jobs/MilkCowsJobForm";
-//import InstructorReportForm from "main/components/Jobs/InstructorReportForm";
+import InstructorReportForm from "main/components/Jobs/InstructorReportForm";
 
 //import { useBackendMutation } from "main/utils/useBackend";
 
@@ -90,7 +90,7 @@ const AdminJobsPage = () => {
         MilkTheCowsMutation.mutate();
     }*/
 
-    //const jobLaunchers = [
+    const jobLaunchers = [
         /*
         {
             name: "Test Job",
@@ -104,12 +104,12 @@ const AdminJobsPage = () => {
             name: "Milk The Cows",
             form: <MilkCowsJobForm submitAction={submitMilkTheCowsJob}/>
         },
-        
+        */
         {
             name: "Instructor Report",
             form: <InstructorReportForm />
-        }*/
-    //]
+        }
+    ]
 
     /*<h2 className="p-3">Launch Jobs</h2>
             <Accordion>
@@ -130,8 +130,20 @@ const AdminJobsPage = () => {
 */
     return (
         <BasicLayout>
+            <h2 className="p-3">Launch Jobs</h2>
+            <Accordion>
+                {
+                    jobLaunchers.map((jobLauncher, index) => (
+                        <Accordion.Item eventKey={index}>
+                            <Accordion.Header>{jobLauncher.name}</Accordion.Header>
+                            <Accordion.Body>
+                                {jobLauncher.form}
+                            </Accordion.Body>
+                        </Accordion.Item>
+                    ))
+                }
+            </Accordion>
 
-            
 
         </BasicLayout>
     );
