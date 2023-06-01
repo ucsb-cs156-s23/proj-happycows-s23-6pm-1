@@ -4,7 +4,7 @@ import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
 //import { useBackend } from "main/utils/useBackend";
 import Accordion from 'react-bootstrap/Accordion';
 import TestJobForm from "main/components/Jobs/TestJobForm";
-//import UpdateCowHealthForm from "main/components/Jobs/UpdateCowHealthForm";
+import UpdateCowHealthForm from "main/components/Jobs/UpdateCowHealthForm";
 //import MilkCowsJobForm from "main/components/Jobs/MilkCowsJobForm";
 import InstructorReportForm from "main/components/Jobs/InstructorReportForm";
 
@@ -47,9 +47,9 @@ const AdminJobsPage = () => {
             { refetchInterval: refreshJobsIntervalMilliseconds }
         );
     // Stryker enable  all
-
+*/
     // UpdateCowHealth job
-/*
+
     const objectToAxiosParamsUpdateCowHealthJob = () => ({
         url: `/api/jobs/launch/updatecowhealth`,
         method: "POST"
@@ -63,14 +63,14 @@ const AdminJobsPage = () => {
     );
     // Stryker enable all
 
-    /*
+    
     const submitUpdateCowHealthJob = async () => {
         console.log("submitUpdateCowHealthJob")
         UpdateCowHealthMutation.mutate();
     }
 
     // MilkTheCows job
-
+    /*
     const objectToAxiosParamsMilkTheCowsJob = () => ({
         url: `/api/jobs/launch/milkthecowjob`,
         method: "POST"
@@ -96,11 +96,12 @@ const AdminJobsPage = () => {
             name: "Test Job",
             form:  <TestJobForm submitAction={submitTestJob} />
         },
-        /*
+        
         {
             name: "Update Cow Health",
             form: <UpdateCowHealthForm submitAction={submitUpdateCowHealthJob}/>
         },
+        /*
         {
             name: "Milk The Cows",
             form: <MilkCowsJobForm submitAction={submitMilkTheCowsJob}/>
