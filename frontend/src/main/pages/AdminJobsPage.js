@@ -5,7 +5,7 @@ import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
 import Accordion from 'react-bootstrap/Accordion';
 import TestJobForm from "main/components/Jobs/TestJobForm";
 import UpdateCowHealthForm from "main/components/Jobs/UpdateCowHealthForm";
-//import MilkCowsJobForm from "main/components/Jobs/MilkCowsJobForm";
+import MilkCowsJobForm from "main/components/Jobs/MilkCowsJobForm";
 import InstructorReportForm from "main/components/Jobs/InstructorReportForm";
 
 import { useBackendMutation } from "main/utils/useBackend";
@@ -70,7 +70,7 @@ const AdminJobsPage = () => {
     }
 
     // MilkTheCows job
-    /*
+    
     const objectToAxiosParamsMilkTheCowsJob = () => ({
         url: `/api/jobs/launch/milkthecowjob`,
         method: "POST"
@@ -88,7 +88,7 @@ const AdminJobsPage = () => {
     const submitMilkTheCowsJob = async () => {
         console.log("submitMilkTheCowsJob")
         MilkTheCowsMutation.mutate();
-    }*/
+    }
 
     const jobLaunchers = [
         
@@ -101,12 +101,12 @@ const AdminJobsPage = () => {
             name: "Update Cow Health",
             form: <UpdateCowHealthForm submitAction={submitUpdateCowHealthJob}/>
         },
-        /*
+        
         {
             name: "Milk The Cows",
             form: <MilkCowsJobForm submitAction={submitMilkTheCowsJob}/>
         },
-        */
+        
         {
             name: "Instructor Report",
             form: <InstructorReportForm />
