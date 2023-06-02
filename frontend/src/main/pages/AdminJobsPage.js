@@ -89,6 +89,25 @@ const AdminJobsPage = () => {
         MilkTheCowsMutation.mutate();
     }
 
+    const objectToAxiosParamsInstructorReportJob = () => ({
+        url: `/api/jobs/launch/instructorreport`,
+        method: "POST"
+    });
+
+    // Stryker disable all
+    const instructorMutation = useBackendMutation(
+        objectToAxiosParamsInstructorReportJob,
+        {  },
+        ["/api/jobs/all"]
+    );
+    // Stryker enable all
+
+    const submitInstructorReportJob = async () => {
+        console.log("submitInstructorReportJob");
+        toast('Submitted Job: Instructor Report From');
+        instructorMutation.mutate();
+    }
+
     const jobLaunchers = [
         {
             name: "Test Job",
@@ -104,7 +123,7 @@ const AdminJobsPage = () => {
         },
         {
             name: "Instructor Report",
-            form: <InstructorReportForm />
+            form: <InstructorReportForm submitAction={submitInstructorReportJob}/>
         },
     ]
 
