@@ -3,6 +3,7 @@ import HomePage from "main/pages/HomePage";
 import LoginPage from "main/pages/LoginPage";
 import ProfilePage from "main/pages/ProfilePage";
 import LeaderboardPage from "main/pages/LeaderboardPage";
+import ProfitsPage from "main/pages/ProfitsPage";
 
 import AdminUsersPage from "main/pages/AdminUsersPage";
 import AdminJobsPage from "main/pages/AdminJobsPage";
@@ -45,6 +46,7 @@ function App() {
              <Route path="/profile" element={<ProfilePage />} />
              <Route path="/leaderboard/:commonsId" element={<LeaderboardPage />}/>
              <Route path="/play/:commonsId" element={<PlayPage />} />
+             <Route path="/play/:commonsId/profits" element={<ProfitsPage />} />
            </>
           )
         }
