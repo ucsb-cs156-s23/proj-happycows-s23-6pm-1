@@ -1,11 +1,13 @@
 import React from "react";
-import { Card } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import ProfitsTable from "main/components/Commons/ProfitsTable";
-
 import { timestampToDate } from "main/utils/dateUtils";
 
+const Profits = ({ profits, onAllProfits, showAll=false }) => {    
+    if(profits && !showAll) {
+        profits = profits.slice(-5);
+    }
 
-const Profits = ({ profits }) => {
     const profitsForTable =
         profits ?
         profits.map(profit => ({
@@ -14,6 +16,8 @@ const Profits = ({ profits }) => {
         })) : 
         // Stryker disable next-line ArrayDeclaration : no need to test what happens if [] is replaced with ["Stryker was here"]
         [];
+
+    profitsForTable.reverse();
     return (
         <Card>
             <Card.Header as="h5">
@@ -25,6 +29,8 @@ const Profits = ({ profits }) => {
                     You will earn profits from milking your cows everyday at 4am.
                 </Card.Title>
                 <ProfitsTable profits={profitsForTable} />
+                {!showAll &&
+                    <Button onClick={onAllProfits}>Show All</Button>}
             </Card.Body>
         </Card>
     );

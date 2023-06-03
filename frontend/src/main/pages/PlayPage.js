@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, CardGroup } from "react-bootstrap";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
@@ -17,6 +17,7 @@ export default function PlayPage() {
 
   const { commonsId } = useParams();
   const { data: currentUser } = useCurrentUser();
+  const navigate = useNavigate();
 
   // Stryker disable all 
   const { data: userCommons } =
@@ -120,6 +121,11 @@ export default function PlayPage() {
     mutationsell.mutate(userCommons)
   };
 
+  var showAll = false;
+  const onAllProfits = () => {
+    navigate(`/play/${commonsId}/profits`);
+  };
+
   return (
     <div style={{ backgroundSize: 'cover', backgroundImage: `url(${Background})` }}>
       <BasicLayout >
@@ -131,7 +137,7 @@ export default function PlayPage() {
             <CardGroup >
               <ManageCows userCommons={userCommons} commons={commons} onBuy={onBuy} onSell={onSell} />
               <FarmStats userCommons={userCommons} />
-              <Profits userCommons={userCommons} profits={userCommonsProfits} />
+              <Profits userCommons={userCommons} profits={userCommonsProfits} onAllProfits={onAllProfits} showAll={showAll}/>
             </CardGroup>
           }
         </Container>

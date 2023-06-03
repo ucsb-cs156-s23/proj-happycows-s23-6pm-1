@@ -2,20 +2,32 @@ import React from "react";
 import Profits from "main/components/Commons/Profits";
 import Background from "../../assets/PlayPageBackground.png";
 import BasicLayout from "main/layouts/BasicLayout/BasicLayout";
-import { Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { useBackend } from "main/utils/useBackend";
 
 
-export default function ProfitsPage({ profits, commonsId }) {
-    const navigate = useNavigate();
-    const visitButtonClick = (id) => { navigate("/play/" + id) };
+export default function ProfitsPage() {
+    const { commonsId } = useParams();
+
+    // Stryker disable all 
+    const { data: profits } =
+        useBackend(
+            [`/api/profits/all/commonsid?commonsId=${commonsId}`],
+            {
+                method: "GET",
+                url: "/api/profits/all/commonsid",
+                params: {
+                    commonsId: commonsId
+                }
+            }
+        );
+    // Stryker enable all 
 
     return (
-        <div style={{ backgroundSize: 'cover', backgroundImage: `url(${Background})`}} data-testid="profitspage-div">
+        <div style={{ backgroundSize: 'cover', backgroundImage: `url(${Background})` }} data-testid="profitspage-div">
             <BasicLayout>
-                <Button onClick={visitButtonClick(commonsId)}>Go Back</Button>
-                <p/>
-                <Profits profits={Array.from(profits)} showAll/>
+                { !!profits &&
+                <Profits profits={Array.from(profits)} showAll />}
             </BasicLayout>
         </div>
     )

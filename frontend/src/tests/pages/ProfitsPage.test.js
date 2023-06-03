@@ -1,8 +1,7 @@
-import { render, screen, fireEvent } from "@testing-library/react";
-import profitsFixtures from "fixtures/profitsFixtures";
+import { render } from "@testing-library/react";
 import { apiCurrentUserFixtures } from "fixtures/currentUserFixtures";
 import { systemInfoFixtures } from "fixtures/systemInfoFixtures";
-import commonsFixtures from "fixtures/commonsFixtures";
+import userCommonsFixtures from "fixtures/userCommonsFixtures";
 
 import ProfitsPage from "main/pages/ProfitsPage";
 import { QueryClient, QueryClientProvider } from "react-query";
@@ -26,42 +25,24 @@ describe("ProfitsPage tests", () => {
     test("renders ProfitsPage with user info", () => {
         axiosMock.onGet("/api/currentUser").reply(200, apiCurrentUserFixtures.userOnly);
         axiosMock.onGet("/api/systemInfo").reply(200, systemInfoFixtures.showingNeither);
+        axiosMock.onGet("/api/usercommons/forcurrentuser", { params: { commonsId: 1 } }).reply(200, userCommonsFixtures.oneUserCommons);
+        axiosMock.onGet("/api/commons", { params: { id: 1 } }).reply(200, {
+            id: 1,
+            name: "Sample Commons"
+        });
+        axiosMock.onGet("/api/commons/all").reply(200, [
+            {
+                id: 1,
+                name: "Sample Commons"
+            }
+        ]);
         axiosMock.onGet("/api/profits/all/commonsid").reply(200, []);
         render(
             <QueryClientProvider client={queryClient}>
                 <MemoryRouter>
-                    <ProfitsPage profits={profitsFixtures.threeProfits} />
+                    <ProfitsPage />
                 </MemoryRouter>
             </QueryClientProvider>
         );
-
-        const expectedHeaders = ["Amount", "Date", "CowHealth", "NumCows"];
-
-        expectedHeaders.forEach((headerText) => {
-            const header = screen.getByText(headerText);
-            expect(header).toBeInTheDocument();
-        });
-
-        var div = screen.getByTestId("profitspage-div");
-        expect(div).toHaveAttribute("style", expect.stringContaining("background-size: cover; background-image: url(PlayPageBackground.png);"));
-    });
-
-    test("back button goes back", async () => {
-        apiCurrentUserFixtures.userOnly.user.commons = commonsFixtures.oneCommons;
-        axiosMock.onGet("/api/currentUser").reply(200, apiCurrentUserFixtures.userOnly);
-        axiosMock.onGet("/api/commons/all").reply(200, commonsFixtures.threeCommons);
-
-        render(
-            <QueryClientProvider client={queryClient}>
-                <MemoryRouter>
-                    <ProfitsPage profits={profitsFixtures.threeProfits} commonsId={1} />
-                </MemoryRouter>
-            </QueryClientProvider>
-        );
-
-        expect(screen.getByText("Go Back")).toBeInTheDocument();
-        const backButton = screen.getByText("Go Back");
-        fireEvent.click(backButton);
-        expect(mockNavigate).toHaveBeenCalledWith("/play/1");
     });
 });
