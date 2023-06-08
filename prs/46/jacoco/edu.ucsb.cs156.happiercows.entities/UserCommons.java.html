@@ -38,15 +38,21 @@ public class UserCommons {
 
     private double cowHealth;
 
+    private int cowsBought;
+
+    private int cowsSold;
+
+    private int cowDeaths;
+
     // userID and commonsId are used by the frontend
     @JsonInclude
     public long getUserId() {
-<span class="fc" id="L44">        return user.getId();</span>
+<span class="fc" id="L50">      return user.getId();</span>
     }
 
     @JsonInclude
     public long getCommonsId() {
-<span class="fc" id="L49">        return commons.getId();</span>
+<span class="fc" id="L55">        return commons.getId();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
