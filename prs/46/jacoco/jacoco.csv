@@ -26,7 +26,7 @@ example,edu.ucsb.cs156.happiercows.entities,UserCommons,0,8,0,0,0,2,0,2,0,2
 example,edu.ucsb.cs156.happiercows.entities,User,0,16,0,0,0,1,0,1,0,1
 example,edu.ucsb.cs156.happiercows.models,HealthUpdateStrategyList,0,29,0,0,0,12,0,2,0,2
 example,edu.ucsb.cs156.happiercows.controllers,UserCommonsController,0,231,0,4,0,42,0,14,0,12
-example,edu.ucsb.cs156.happiercows.controllers,CommonsController,0,423,0,16,0,99,0,25,0,17
+example,edu.ucsb.cs156.happiercows.controllers,CommonsController,0,472,0,16,0,104,0,27,0,19
 example,edu.ucsb.cs156.happiercows.controllers,UsersController,0,16,0,0,0,4,0,2,0,2
 example,edu.ucsb.cs156.happiercows.controllers,JobsController,0,64,0,0,0,17,0,8,0,8
 example,edu.ucsb.cs156.happiercows.controllers,ProfitsController,0,40,0,0,0,7,0,4,0,4
