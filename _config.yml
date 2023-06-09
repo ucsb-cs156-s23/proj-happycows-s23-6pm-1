@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-s23/proj-happycows-s23-6pm-1
 owner: ucsb-cs156-s23
 repo_name: proj-happycows-s23-6pm-1
-pull_requests: [{"author":{"id":"MDQ6VXNlcjI0MjM3MDY1","is_bot":false,"login":"GlassBricks","name":"Benjamin Ye"},"headRefName":"ben-refactor-UserCommons-table","number":46,"title":"Refactor UserCommons table to use a better table definition","url":"https://github.com/ucsb-cs156-s23/proj-happycows-s23-6pm-1/pull/46"}]
+pull_requests: []
