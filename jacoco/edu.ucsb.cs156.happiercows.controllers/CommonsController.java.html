@@ -154,7 +154,7 @@ import java.util.stream.Collectors;
 <span class="fc" id="L154">                .degradationRate(params.getDegradationRate())</span>
 <span class="fc" id="L155">                .showLeaderboard(params.getShowLeaderboard())</span>
 <span class="fc" id="L156">                .carryingCapacity(params.getCarryingCapacity());</span>
-        
+
         // ok to set null values for these, so old backend still works
 <span class="fc bfc" id="L159" title="All 2 branches covered.">        if (params.getAboveCapacityHealthUpdateStrategy() != null) {</span>
 <span class="fc" id="L160">            builder.aboveCapacityHealthUpdateStrategy(CowHealthUpdateStrategies.valueOf(params.getAboveCapacityHealthUpdateStrategy()));</span>
@@ -208,8 +208,8 @@ import java.util.stream.Collectors;
         }
 
 <span class="fc" id="L210">        UserCommons uc = UserCommons.builder()</span>
-<span class="fc" id="L211">                .commonsId(commonsId)</span>
-<span class="fc" id="L212">                .userId(userId)</span>
+<span class="fc" id="L211">                .user(u)</span>
+<span class="fc" id="L212">                .commons(joinedCommons)</span>
 <span class="fc" id="L213">                .username(username)</span>
 <span class="fc" id="L214">                .totalWealth(joinedCommons.getStartingBalance())</span>
 <span class="fc" id="L215">                .numOfCows(0)</span>
@@ -231,15 +231,13 @@ import java.util.stream.Collectors;
     public Object deleteCommons(
             @ApiParam(&quot;id&quot;) @RequestParam Long id) {
 
-<span class="fc" id="L234">        Commons foundCommons = commonsRepository.findById(id)</span>
+<span class="fc" id="L234">        commonsRepository.findById(id)</span>
 <span class="fc" id="L235">                .orElseThrow(() -&gt; new EntityNotFoundException(Commons.class, id));</span>
 
 <span class="fc" id="L237">        commonsRepository.deleteById(id);</span>
-<span class="fc" id="L238">        userCommonsRepository.deleteAllByCommonsId(id);</span>
 
-<span class="fc" id="L240">        String responseString = String.format(&quot;commons with id %d deleted&quot;, id);</span>
-
-<span class="fc" id="L242">        return genericMessage(responseString);</span>
+<span class="fc" id="L239">        String responseString = String.format(&quot;commons with id %d deleted&quot;, id);</span>
+<span class="fc" id="L240">        return genericMessage(responseString);</span>
 
     }
 
@@ -249,26 +247,27 @@ import java.util.stream.Collectors;
     public Object deleteUserFromCommon(@PathVariable(&quot;commonsId&quot;) Long commonsId,
                                        @PathVariable(&quot;userId&quot;) Long userId) throws Exception {
 
-<span class="fc" id="L252">        Optional&lt;UserCommons&gt; uc = userCommonsRepository.findByCommonsIdAndUserId(commonsId, userId);</span>
-<span class="fc" id="L253">        UserCommons userCommons = uc.orElseThrow(() -&gt; new Exception(</span>
-<span class="fc" id="L254">                String.format(&quot;UserCommons with commonsId=%d and userId=%d not found.&quot;, commonsId, userId)));</span>
+<span class="fc" id="L250">        UserCommons userCommons = userCommonsRepository.findByCommonsIdAndUserId(commonsId, userId)</span>
+<span class="fc" id="L251">                .orElseThrow(() -&gt; new EntityNotFoundException(</span>
+                        UserCommons.class, &quot;commonsId&quot;, commonsId, &quot;userId&quot;, userId)
+                );
 
-<span class="fc" id="L256">        userCommonsRepository.deleteById(userCommons.getId());</span>
-    
-<span class="fc" id="L258">        String responseString = String.format(&quot;user with id %d deleted from commons with id %d, %d users remain&quot;, userId, commonsId, commonsRepository.getNumUsers(commonsId).orElse(0));</span>
-    
-<span class="fc" id="L260">        return genericMessage(responseString);    </span>
+<span class="fc" id="L255">        userCommonsRepository.delete(userCommons);</span>
+
+<span class="fc" id="L257">        String responseString = String.format(&quot;user with id %d deleted from commons with id %d, %d users remain&quot;, userId, commonsId, commonsRepository.getNumUsers(commonsId).orElse(0));</span>
+
+<span class="fc" id="L259">        return genericMessage(responseString);</span>
     }
 
     public CommonsPlus toCommonsPlus(Commons c) {
-<span class="fc" id="L264">        Optional&lt;Integer&gt; numCows = commonsRepository.getNumCows(c.getId());</span>
-<span class="fc" id="L265">        Optional&lt;Integer&gt; numUsers = commonsRepository.getNumUsers(c.getId());</span>
+<span class="fc" id="L263">        Optional&lt;Integer&gt; numCows = commonsRepository.getNumCows(c.getId());</span>
+<span class="fc" id="L264">        Optional&lt;Integer&gt; numUsers = commonsRepository.getNumUsers(c.getId());</span>
 
-<span class="fc" id="L267">        return CommonsPlus.builder()</span>
-<span class="fc" id="L268">                .commons(c)</span>
-<span class="fc" id="L269">                .totalCows(numCows.orElse(0))</span>
-<span class="fc" id="L270">                .totalUsers(numUsers.orElse(0))</span>
-<span class="fc" id="L271">                .build();</span>
+<span class="fc" id="L266">        return CommonsPlus.builder()</span>
+<span class="fc" id="L267">                .commons(c)</span>
+<span class="fc" id="L268">                .totalCows(numCows.orElse(0))</span>
+<span class="fc" id="L269">                .totalUsers(numUsers.orElse(0))</span>
+<span class="fc" id="L270">                .build();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
