@@ -23,4 +23,4 @@ repo_name: "TBD"
 repo: ucsb-cs156-s23/proj-happycows-s23-6pm-1
 owner: ucsb-cs156-s23
 repo_name: proj-happycows-s23-6pm-1
-pull_requests: [{"author":{"id":"MDQ6VXNlcjExMTkwMTc=","is_bot":false,"login":"pconrad","name":"Phill Conrad"},"headRefName":"pconrad-patch-1","number":54,"title":"pc - fix default job schedule","url":"https://github.com/ucsb-cs156-s23/proj-happycows-s23-6pm-1/pull/54"},{"author":{"id":"MDQ6VXNlcjQzOTgwMDA5","is_bot":false,"login":"TheRealJBomb","name":"Jake G"},"headRefName":"jake-create-set-cow-health-page-on-frontend-for-admin","number":53,"title":"Create set cow health page on frontend for admin [DRAFT PR]","url":"https://github.com/ucsb-cs156-s23/proj-happycows-s23-6pm-1/pull/53"}]
+pull_requests: [{"author":{"id":"MDQ6VXNlcjQzOTgwMDA5","is_bot":false,"login":"TheRealJBomb","name":"Jake G"},"headRefName":"jake-create-set-cow-health-page-on-frontend-for-admin","number":53,"title":"Create set cow health page on frontend for admin [DRAFT PR]","url":"https://github.com/ucsb-cs156-s23/proj-happycows-s23-6pm-1/pull/53"}]
