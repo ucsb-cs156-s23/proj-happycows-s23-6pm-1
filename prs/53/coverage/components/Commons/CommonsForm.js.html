@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/7</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/11</span>
+                <span class='fraction'>11/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/7</span>
+                <span class='fraction'>7/7</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -283,24 +283,24 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">40x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">40x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">40x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">40x</span>
+<span class="cline-any cline-yes">40x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">40x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -397,7 +397,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">8x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -485,30 +485,30 @@ import {useBackend} from "main/utils/useBackend";
 &nbsp;
 import HealthUpdateStrategiesDropdown from "main/components/Commons/HealthStrategiesUpdateDropdown";
 &nbsp;
-function <span class="fstat-no" title="function not covered" >CommonsForm(</span>{initialCommons, submitAction, buttonLabel = <span class="branch-0 cbranch-no" title="branch not covered" >"Create"}</span>) {
+function CommonsForm({initialCommons, submitAction, buttonLabel = "Create"}) {
   // Stryker disable all
   const {
     register,
     formState: {errors},
     handleSubmit,
-  } = <span class="cstat-no" title="statement not covered" >useForm(</span>
+  } = useForm(
     {defaultValues: initialCommons || {}}
   );
   // Stryker restore all
 &nbsp;
-  const {data: healthUpdateStrategies} = <span class="cstat-no" title="statement not covered" >useBackend(</span>
+  const {data: healthUpdateStrategies} = useBackend(
     "/api/commons/all-health-update-strategies", {
       method: "GET",
       url: "/api/commons/all-health-update-strategies",
     },
   );
 &nbsp;
-  const testid = <span class="cstat-no" title="statement not covered" >"CommonsForm";</span>
+  const testid = "CommonsForm";
 &nbsp;
-  const belowStrategy = <span class="cstat-no" title="statement not covered" >initialCommons?.belowCapacityStrategy || healthUpdateStrategies?.defaultBelowCapacity;</span>
-  const aboveStrategy = <span class="cstat-no" title="statement not covered" >initialCommons?.aboveCapacityStrategy || healthUpdateStrategies?.defaultAboveCapacity;</span>
+  const belowStrategy = initialCommons?.belowCapacityStrategy || healthUpdateStrategies?.defaultBelowCapacity;
+  const aboveStrategy = initialCommons?.aboveCapacityStrategy || healthUpdateStrategies?.defaultAboveCapacity;
   
-<span class="cstat-no" title="statement not covered" >  return (</span>
+  return (
     &lt;Form onSubmit={handleSubmit(submitAction)}&gt;
       {initialCommons &amp;&amp; (
         &lt;Form.Group className="mb-3"&gt;
@@ -605,7 +605,7 @@ function <span class="fstat-no" title="function not covered" >CommonsForm(</span
           {...register("startingDate", {
             valueAsDate: true,
             validate: {
-              isPresent: <span class="fstat-no" title="function not covered" >(v</span>) =&gt; <span class="cstat-no" title="statement not covered" >!isNaN(v) || "Starting date is required",</span>
+              isPresent: (v) =&gt; !isNaN(v) || "Starting date is required",
             },
           })}
         /&gt;
@@ -694,7 +694,7 @@ export default CommonsForm;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Sun Jul 30 2023 22:15:57 GMT-0700 (Pacific Daylight Time)
+                at Mon Jul 31 2023 08:35:12 GMT-0700 (Pacific Daylight Time)
             </div>
         <script src="../../prettify.js"></script>
         <script>
